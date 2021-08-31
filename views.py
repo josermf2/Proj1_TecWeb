@@ -1,16 +1,32 @@
-from utils import load_template, add_notes, build_response, load_database
+from utils import load_template, add_notes, build_response, load_database, extract_name
 import urllib
 from database import Note, Database
 
 def index(request):
     # A string de request sempre começa com o tipo da requisição (ex: GET, POST)
+    database = Database('bancoProjeto1')
 
-    if request.startswith('POST'):
+    delete_or_update = False
+
+    if 'deletar' in request:
+        detail = str(urllib.parse.unquote_plus(extract_name(request), encoding='utf-8', errors='replace'))
+        for dados in load_database('bancoProjeto1'):
+            if detail in str(dados.content):
+                database.delete(dados.id)
+                break
+        delete_or_update = True
+        
+
+    if "Content-Length: 10" in request:
+        delete_or_update = True
+
+
+    if request.startswith('POST') and delete_or_update == False:
         request = request.replace('\r', '')  # Remove caracteres indesejados
         # Cabeçalho e corpo estão sempre separados por duas quebras de linha
         partes = request.split('\n\n')
         corpo = partes[1]
-        params = {}
+        params = {'title': '', 'content': ''}
         # Preencha o dicionário params com as informações do corpo da requisição
         # O dicionário conterá dois valores, o título e a descrição.
         # Posteriormente pode ser interessante criar uma função que recebe a
@@ -22,7 +38,6 @@ def index(request):
             if chave_valor.startswith('detalhes'):
                 params['content'] = urllib.parse.unquote_plus(chave_valor[chave_valor.find('=')+1:], encoding='utf-8', errors='replace')
         newNote = Note(title=params['title'], content=params['content'])
-        database = Database('bancoProjeto1')
         database.add(newNote)
 
     # Cria uma lista de <li>'s para cada anotação

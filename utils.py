@@ -6,6 +6,13 @@ def extract_route(string):
     finalIndex = string.find('HTTP') -1
     return string[inicialIndex:finalIndex]
 
+def extract_name(string):
+    if 'deletar' in string:
+        inicialIndex = string.find('deletar=') + 8 
+    if 'atualizar' in string:
+        inicialIndex = string.find('atualizar=') + 8 
+    return string[inicialIndex:]    
+
 def read_file(argument):
     extensions = ['html', 'txt', 'css', 'js']
 
