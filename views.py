@@ -1,4 +1,4 @@
-from utils import load_template, add_notes, build_response, load_database, extract_name
+from utils import load_template, add_notes, build_response, load_database, extract_id
 import urllib
 from database import Note, Database
 
@@ -9,11 +9,9 @@ def index(request):
     delete_or_update = False
 
     if 'deletar' in request:
-        detail = str(urllib.parse.unquote_plus(extract_name(request), encoding='utf-8', errors='replace'))
-        for dados in load_database('bancoProjeto1'):
-            if detail in str(dados.content):
-                database.delete(dados.id)
-                break
+        detail = extract_id(request)
+        print(request)
+        database.delete(detail)
         delete_or_update = True
         
 
@@ -44,7 +42,7 @@ def index(request):
     # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     note_template = load_template('components/note.html')
     notes_li = [
-        note_template.format(title=dados.title, details=dados.content)
+        note_template.format(id=dados.id, title=dados.title, details=dados.content)
         for dados in load_database('bancoProjeto1')
     ]
     notes = '\n'.join(notes_li)
