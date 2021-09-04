@@ -43,6 +43,21 @@
             
             <div class="card-container">
                 {notes}
+                <div name="myModal" class="modal" id="modal" >
+                    
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <label for="fname">Título:</label>
+                      <textarea id="modal-title"></textarea>                      
+                      <label for="fname">Conteúdo:</label>
+                      <textarea id="modal-content"></textarea>                      
+                    </div>
+          
+                    <form method="POST">
+                        <button id="update-button" name="atualizar" class="update-button" type="submit" value="">Atualizar</button>
+                    </form>
+                    
+                </div>
             </div>
         
         </main>

@@ -1,10 +1,14 @@
 import json
 from database import Database
 
-def extract_route(string):
-    inicialIndex = string.find('GET') + 5 
-    finalIndex = string.find('HTTP') -1
-    return string[inicialIndex:finalIndex]
+def extract_route(requisicao):
+    if requisicao.startswith('GET'):
+        lista1 = requisicao.split("GET /")
+    else:
+        lista1 = requisicao.split("POST /")
+
+    lista2 = lista1[1].split(" ")
+    return lista2[0]
 
 def extract_id(string):
     if 'deletar' in string:

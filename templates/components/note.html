@@ -1,15 +1,13 @@
 <div class="card">
-    <h3 class="card-title">{title}</h3>
-    <div class="card-content">
+    <h3 id="title"  class="card-title">{title}</h3>
+    <div id="content"  class="card-content">
         <p>{details}</p>
     </div>
     <div class="botoes">
         <form method="POST">
             <button name="deletar"  class="delete-button" type="submit" value="{id}">Deletar</button>
         </form>
-        <form method="POST">
-            <button name="atualizar" class="atualizar-button" type="submit">Atualizar</button>
-        </form>
-    </div>
+        <button class="edit-button" value="{id}|{title}|{details}">Editar</button>
+    </div> 
 </div>
 

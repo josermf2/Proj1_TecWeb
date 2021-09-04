@@ -28,3 +28,32 @@ document.addEventListener("DOMContentLoaded", function () {
     )} card-rotation-${getRandomInt(1, 11)}`;
   }
 });
+
+var modal = document.getElementById("modal");
+var allBtns = document.getElementsByClassName("edit-button");
+var spans = document.getElementsByClassName("close");
+
+var modal_title = document.getElementById("modal-title");
+var modal_content = document.getElementById("modal-content");
+
+var update_button = document.getElementById("update-button");
+let id = "";
+
+for(let i=0;i<allBtns.length;i++){
+  allBtns[i].onclick = function() {
+    modal_title.innerHTML = allBtns[i].value.split("|")[1];
+    modal_content.innerHTML = allBtns[i].value.split("|")[2];
+    modal.style.display = "block";
+    id = allBtns[i].value.split("|")[0];
+  }
+}
+
+update_button.addEventListener('click', ()=>{
+  update_button.setAttribute("value", "id=" + id + "&title=" + modal_title.value + "&details=" + modal_content.value);
+});    
+
+for(let i=0;i<spans.length;i++){
+   spans[i].onclick = function() {
+    modal.style.display = "none";
+   }
+}
