@@ -57,3 +57,6 @@ for(let i=0;i<spans.length;i++){
     modal.style.display = "none";
    }
 }
+
+let xhr = new XMLHttpRequest();
+console.log(xhr.responseText);
