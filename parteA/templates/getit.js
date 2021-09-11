@@ -27,6 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
       5
     )} card-rotation-${getRandomInt(1, 11)}`;
   }
+
+  let deletedCards = document.getElementsByClassName("deleted-card");
+  for (let i = 0; i < deletedCards.length; i++) {
+    let deletedCard = deletedCards[i];
+    deletedCard.className += ` card-color-${getRandomInt(
+      1,
+      5
+    )}`;
+  }
 });
 
 var modal = document.getElementById("modal");
@@ -60,3 +69,15 @@ for(let i=0;i<spans.length;i++){
 
 let xhr = new XMLHttpRequest();
 console.log(xhr.responseText);
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}

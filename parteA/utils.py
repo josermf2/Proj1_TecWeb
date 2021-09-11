@@ -12,10 +12,23 @@ def extract_route(requisicao):
 
 def extract_id(string):
     if 'deletar' in string:
-        inicialIndex = string.find('deletar=') + 8 
+        inicialIndex = string.find('id%3D') + 5 
+        finalIndex = string.find('%26')
+    
+        return str(string[inicialIndex:finalIndex])
+
+    if 'deleted' in string:
+        inicialIndex = string.find('deleted=') + 8 
+    
     if 'atualizar' in string:
         inicialIndex = string.find('atualizar=') + 10
-    return string[inicialIndex:]    
+    
+    if 'restaurar' in string:
+        inicialIndex = string.find('id%3D') + 5
+        finalIndex = string.find('%26')
+        return str(string[inicialIndex:finalIndex])
+
+    return str(string[inicialIndex:])
 
 def read_file(argument):
     extensions = ['html', 'txt', 'css', 'js']

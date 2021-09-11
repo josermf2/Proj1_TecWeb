@@ -32,5 +32,5 @@ class Database():
         self.conn.commit()
 
     def delete(self, note_id):
-        self.conn.execute("DELETE FROM note WHERE id = ?", (str(note_id)))
+        self.conn.execute("DELETE FROM note WHERE id = ?", [str(note_id)])
         self.conn.commit()

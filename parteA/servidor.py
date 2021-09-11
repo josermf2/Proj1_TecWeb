@@ -18,8 +18,8 @@ while True:
     client_connection, client_address = server_socket.accept()
 
     request = client_connection.recv(1024).decode()
-
     route = extract_route(request)
+    
     filepath = CUR_DIR / route
     if filepath.is_file():
         response = build_response() + read_file(filepath)

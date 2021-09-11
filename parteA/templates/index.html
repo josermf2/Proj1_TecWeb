@@ -39,7 +39,7 @@
                   placeholder="Digite o conteúdo..."
                 ></textarea>
                 <button class="btn" type="submit">Criar</button>
-            </form>
+            </form> 
             
             <div class="card-container">
                 {notes}
@@ -63,7 +63,16 @@
 
                 </div>
             </div>
-        
+
+            <div class="div-lixeira">
+              <button onclick="openNav()" class="botao-lixeira">Lixeira</button>
+            </div>
+
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              {deleted_notes}
+            </div>
+            
         </main>
         <script type="text/javascript" src="/templates/getit.js"></script>
     </body>
