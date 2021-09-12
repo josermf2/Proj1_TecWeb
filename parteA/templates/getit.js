@@ -71,13 +71,13 @@ let xhr = new XMLHttpRequest();
 console.log(xhr.responseText);
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  document.getElementById("mySidenav").style.width = "17%";
+  document.getElementsByClassName("form-card")[0].style.marginRight = "45%";
+  document.getElementsByClassName("card-container")[0].style.marginRight = "15%";
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-  document.body.style.backgroundColor = "white";
+  document.getElementsByClassName("form-card")[0].style.marginRight = "30%";
+  document.getElementsByClassName("card-container")[0].style.marginRight = "3%";
 }

@@ -17,13 +17,14 @@ print(f'Servidor escutando em (ctrl+click): http://{SERVER_HOST}:{SERVER_PORT}')
 while True:
     client_connection, client_address = server_socket.accept()
 
-    request = client_connection.recv(1024).decode()
+    request = client_connection.recv(2048).decode()
     route = extract_route(request)
-    
+
     filepath = CUR_DIR / route
     if filepath.is_file():
         response = build_response() + read_file(filepath)
     elif route == '' or route == ' /':
+
         response = index(request)
     else:
         response = build_response()

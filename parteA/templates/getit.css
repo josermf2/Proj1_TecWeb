@@ -189,6 +189,7 @@ body {
   margin-right: 20px;
 }
 
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -196,7 +197,7 @@ body {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #4c4c4c;
+  background-color: #706c6c;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;

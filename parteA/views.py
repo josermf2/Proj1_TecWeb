@@ -1,3 +1,4 @@
+from types import resolve_bases
 from utils import load_template, add_notes, build_response, load_database, extract_id
 import urllib
 from database import Note, Database
@@ -26,6 +27,7 @@ def create_Note(request):
     return Note(title=params['title'], content=params['content'])
 
 def recreate_Note(request):
+    print(request)
     request = request.replace('\r', '')  # Remove caracteres indesejados
     partes = request.split('\n\n')
     corpo = partes[1]
@@ -37,7 +39,8 @@ def recreate_Note(request):
             params['title'] = urllib.parse.unquote_plus(chave_valor.split("%3D")[1], encoding='utf-8', errors='replace')
         if chave_valor.startswith('details'):
             params['content'] = urllib.parse.unquote_plus(chave_valor.split("%3D")[1], encoding='utf-8', errors='replace')
-    
+            print(chave_valor.split("%3D"))
+
     return Note(title=params['title'], content=params['content'])
 
 def index(request):
@@ -62,7 +65,6 @@ def index(request):
         if "restaurar" in request:
             newNote = recreate_Note(request)
             detail = extract_id(request)
-            print(detail)
             deletedDatabase.delete(detail)
             database.add(newNote)
         elif 'deletar' in request:
@@ -82,7 +84,7 @@ def index(request):
         note_template.format(id=dados.id, title=dados.title, details=dados.content)
         for dados in load_database('bancoProjeto1')
     ]
-
+    
     deleted_note_template = load_template('components/deleted_note.html')
     deleted_notes_li = [
         deleted_note_template.format(id=dados.id, title=dados.title, details=dados.content)
