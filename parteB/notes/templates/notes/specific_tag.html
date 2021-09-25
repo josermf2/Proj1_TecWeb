@@ -1,0 +1,32 @@
+{% extends "notes/index.html" %}
+{% load static %}
+
+{% block notes_content %}
+
+<h1 class="tags-h1">{{ tag_name }}</h1>
+
+<div class="card-container">
+    {% for note in notes %}
+
+    <div class="card">
+      <h3 class="card-tag">{{ note.tag }}</h3>
+      <h3 id="title"  class="card-title">{{ note.title }}</h3>
+      <div id="content"  class="card-content">
+        <p>{{ note.content }}</p>
+      
+      </div>
+  
+      <div  class="botoes">
+        <form method="POST" action="{% url 'delete' delete_id=note.id %}">
+          {% csrf_token %}
+          <button name="deletar" class="delete-button" type="submit">Deletar</button>
+        </form>
+  
+        <button class="edit-button" value="{{note.id}}|{{note.title}}|{{note.content}}|{{note.tag}}">Editar</button>
+      </div> 
+    </div> 
+    {% endfor %}
+  </div>
+  
+
+{% endblock %}

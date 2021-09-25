@@ -1,0 +1,374 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  background-color: #f7d736;
+
+  transition: background-color 0.3s;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, 0.3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+.appbar{
+  display: flex;
+  flex-direction: row;
+  background-color:#f7d736;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.logo{
+  width:5%;
+}
+
+.subtitle{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-left: 13px;
+}
+
+.form-card{
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border: 10px solid white;
+  border-radius: 4px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.form-card-title, .autoresize{
+  border: unset;
+}
+
+.form-card-title{
+  font-size: 120%;
+  margin-bottom: 3%;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.card, .deleted-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 18%;
+  height: 130px;
+  border-radius: 3px;
+  margin-top: 3%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.deleted-card{
+  width: 90%;
+  margin-left: 5%;
+}
+
+
+.card-title, .card-tag{
+  display: flex;
+  flex-direction: column;
+  font-size: 110%;
+  font-family: 'Permanent Marker', cursive;
+  justify-content: flex-start;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.card-tag{
+  align-items: flex-end;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 85%;
+  font-family: 'Permanent Marker', cursive;
+  color: #4c4c4c;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.botoes, .div-lixeira{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
+.delete-button, .update-button, .edit-button, .botao-lixeira, .restaurar-button, .update-button{
+  font-family: 'Permanent Marker', cursive;
+  background-color: #f7d736;
+  margin-right: 5px;
+}
+
+.div-lixeira{
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.tag-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+}
+
+.tag-button {
+  font-family: 'Permanent Marker', cursive;
+  background-color: #f7d736;
+  margin-right: 5px;
+  font-size: 150%;
+}
+
+.tags-h1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  font-family: 'Permanent Marker', cursive;
+  margin-top: 4%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #706c6c;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;  
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);  
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: 25%;
+  
+}
+
+.modal-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #fefefe;
+  margin: 1%;
+  margin-bottom: 5%;
+  padding: 20px;
+  width: 95%;
+  height: 30%;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.textarea-modal{
+  font-family: 'Permanent Marker', cursive;
+  width: 50%;
+  font-size: large;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1%;
+  font-size: x-large;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tags-h1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+}
+
+.card-color-1{
+  background-color: #fae890;
+}
+
+.card-color-2{
+  background-color: #ead3a7;
+}
+
+.card-color-3{
+  background-color: #9de0f5;
+}
+
+.card-color-4{
+  background-color: #ef89ba;
+}
+
+.card-color-5{
+  background-color: #abe9c1;
+}
+
+.card-rotation-1{
+  transform: rotate(1deg);
+}
+
+.card-rotation-2{
+  transform: rotate(-1deg);
+}
+
+.card-rotation-3{
+  transform: rotate(2deg); 
+}
+
+.card-rotation-4{
+  transform: rotate(-2deg);  
+}
+
+.card-rotation-5{
+  transform: rotate(3deg);
+}
+
+.card-rotation-6{
+  transform: rotate(-3deg);
+}
+
+.card-rotation-7{
+  transform: rotate(4deg);
+}
+
+.card-rotation-8{
+  transform: rotate(-4deg);
+}
+
+.card-rotation-9{
+  transform: rotate(5deg);
+}
+
+.card-rotation-10{
+  transform: rotate(-5deg);
+
+}
+
+.card-rotation-11{
+  transform: rotate(0deg);
+}

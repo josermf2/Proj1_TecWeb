@@ -1,0 +1,35 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <img class="logo" src="{% static 'notes/img/logo-getit.png' %}" />
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+
+<main class="container">
+  {% block notes_content %} {% endblock %}
+
+  <div name="myModal" class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+        
+      <div class="modal-title">   
+        <label for="fname">Tag:</label>
+        <textarea id="modal-tag" class="textarea-modal"></textarea> 
+
+        <label for="fname">Título:</label>
+        <textarea id="modal-title" class="textarea-modal"></textarea> 
+
+        <label for="fname">Conteúdo:</label>
+        <textarea id="modal-content" class="textarea-modal"></textarea>  
+      </div> 
+        
+      <form id = "form-update-button" method='POST'>
+        {% csrf_token %}
+        <button id="update-button" name="atualizar" class="update-button">Atualizar</button>
+      </form>
+  </div>
+</main>
+
+{% endblock %}
